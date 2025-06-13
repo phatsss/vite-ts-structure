@@ -1,10 +1,15 @@
-// Data Transfer Objects for Product
-export interface Product {
-  id: string
-  name: string
-  description?: string
-  price: number
-}
+import { z } from 'zod'
 
-// Input payload when creating/updating
-export type ProductInput = Omit<Product, 'id'>
+// DTOs
+export const ProductInputSchema = z.object({
+  name: z.string().min(1, 'Name is required').max(100),
+  price: z
+    .number({ invalid_type_error: 'Price must be a number' })
+    .min(0, 'Price must be ≥ 0'),
+  description: z.string().max(500).optional(),
+})
+
+export type ProductInput = z.input<typeof ProductInputSchema>
+export type Product = {
+  id: string
+} & z.infer<typeof ProductInputSchema>
