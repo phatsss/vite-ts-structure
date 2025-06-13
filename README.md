@@ -11,6 +11,7 @@ A React + Vite + TanStack Query + TanStack Router application with SOLID-complia
 - React Hook Form + Zod (validation)
 - Tailwind CSS
 - TypeScript
+- i18next (multilingual support)
 
 ## Coding Standards
 
