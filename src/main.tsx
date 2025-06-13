@@ -1,12 +1,40 @@
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 // Import the generated route tree
-import { routeTree } from './routeTree.gen'
+import { routeTree } from '@/routeTree.gen'
+
+// Import fonts, styles and utilities
+import '@fontsource/noto-sans-lao/400.css'
+import '@fontsource/noto-sans-lao/700.css'
 
 import './styles.css'
 import reportWebVitals from './reportWebVitals.ts'
+
+// Import contexts
+import { AuthProvider } from '@/contexts/AuthContext'
+import { ServiceProvider } from '@/contexts/ServiceContext.tsx'
+
+// Import i18n configuration
+import './i18n/config'
+
+/**
+ * QueryClient configuration
+ *
+ * Sets up the TanStack Query client with default options:
+ * - 5 minute stale time for cached data
+ * - Disabled automatic refetching on window focus
+ */
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 minutes
+      refetchOnWindowFocus: false,
+    },
+  },
+})
 
 // Create a new router instance
 const router = createRouter({
@@ -31,7 +59,17 @@ if (rootElement && !rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
     <StrictMode>
-      <RouterProvider router={router} />
+      {/* Provide React Query */}
+      <QueryClientProvider client={queryClient}>
+        {/* Provide API service implementations */}
+        <ServiceProvider>
+          {/* Provide auth state */}
+          <AuthProvider>
+            {/* TanStack Router */}
+            <RouterProvider router={router} />
+          </AuthProvider>
+        </ServiceProvider>
+      </QueryClientProvider>
     </StrictMode>,
   )
 }
