@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
+import { useTranslation } from 'react-i18next'
 
 export default function LoginForm() {
+  const { t } = useTranslation()
   const { login, error, isLoading } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -14,7 +16,7 @@ export default function LoginForm() {
   return (
     <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
-        Login
+        {t('auth.login')}
       </h2>
 
       {error && (
@@ -29,7 +31,7 @@ export default function LoginForm() {
             htmlFor="email"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            Email
+            {t('auth.email')}
           </label>
           <input
             id="email"
@@ -46,7 +48,7 @@ export default function LoginForm() {
             htmlFor="password"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            Password
+            {t('auth.password')}
           </label>
           <input
             id="password"
@@ -63,7 +65,7 @@ export default function LoginForm() {
           disabled={isLoading}
           className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
-          {isLoading ? 'Logging in...' : 'Login'}
+          {isLoading ? t('common.loading') : t('auth.loginButton')}
         </button>
       </form>
 

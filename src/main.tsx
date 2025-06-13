@@ -6,12 +6,27 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 // Import the generated route tree
 import { routeTree } from '@/routeTree.gen'
 
+// Import fonts, styles and utilities
+import '@fontsource/noto-sans-lao/400.css'
+import '@fontsource/noto-sans-lao/700.css'
+
 import './styles.css'
 import reportWebVitals from './reportWebVitals.ts'
+
+// Import contexts
 import { AuthProvider } from '@/contexts/AuthContext'
 import { ServiceProvider } from '@/contexts/ServiceContext.tsx'
 
-// Create a new QueryClient instance
+// Import i18n configuration
+import './i18n/config'
+
+/**
+ * QueryClient configuration
+ *
+ * Sets up the TanStack Query client with default options:
+ * - 5 minute stale time for cached data
+ * - Disabled automatic refetching on window focus
+ */
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

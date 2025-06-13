@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { useAuth } from '@/contexts/AuthContext'
+import { useTranslation } from 'react-i18next'
+
 import logo from '../logo.svg'
 
 export const Route = createFileRoute('/')({
@@ -8,6 +10,7 @@ export const Route = createFileRoute('/')({
 })
 
 function HomePage() {
+  const { t } = useTranslation()
   const { isAuthenticated } = useAuth()
 
   return (
@@ -19,26 +22,23 @@ function HomePage() {
           alt="logo"
         />
 
-        <h1 className="text-4xl font-bold mb-6">Welcome to My App</h1>
+        <h1 className="text-4xl font-bold mb-6">{t('home.welcome')}</h1>
 
-        <p className="max-w-md mb-8 text-lg">
-          A React application with authentication, role-based access control,
-          and TanStack Query.
-        </p>
+        <p className="max-w-md mb-8 text-lg">{t('home.description')}</p>
 
         {isAuthenticated ? (
           <Link
             to="/dashboard"
             className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-lg"
           >
-            Go to Dashboard
+            {t('home.goToDashboard')}
           </Link>
         ) : (
           <Link
             to="/login"
             className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-lg"
           >
-            Login to Get Started
+            {t('home.loginToStart')}
           </Link>
         )}
 

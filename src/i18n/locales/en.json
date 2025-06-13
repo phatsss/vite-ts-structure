@@ -1,0 +1,60 @@
+{
+  "common": {
+    "appName": "My App",
+    "loading": "Loading...",
+    "error": "An error occurred"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "loginButton": "Log In",
+    "loginError": "Invalid email or password",
+    "welcomeBack": "Welcome Back",
+    "hi": "Hi, {{name}}"
+  },
+  "home": {
+    "welcome": "Welcome to My App",
+    "description": "A React application with authentication, role-based access control, and TanStack Query.",
+    "loginToStart": "Login to Get Started",
+    "goToDashboard": "Go to Dashboard"
+  },
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "products": "Products"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "adminPanel": "Admin Panel",
+    "adminContent": "This content is only visible to admins.",
+    "manageUsers": "Manage Users",
+    "managementTools": "Management Tools",
+    "managementContent": "This content is visible to admins and managers.",
+    "viewReports": "View Reports",
+    "userContent": "User Content",
+    "userContentDesc": "This content is visible to all authenticated users.",
+    "viewContent": "View Content"
+  },
+  "profile": {
+    "title": "User Profile",
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "permissions": "Permissions"
+  },
+  "products": {
+    "title": "Products",
+    "loading": "Loading products...",
+    "error": "Error loading products.",
+    "newProduct": "+ New Product",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "language": {
+    "english": "English",
+    "lao": "ລາວ",
+    "changeLanguage": "Change Language"
+  }
+}

@@ -1,8 +1,10 @@
 import { useProducts, useDeleteProduct } from './hooks'
 import RoleBasedAccess from '@/components/RoleBasedAccess'
 import { Link } from '@tanstack/react-router'
+import { useTranslation } from 'react-i18next'
 
 export function ProductList() {
+  const { t } = useTranslation()
   const { data: products, isLoading, error } = useProducts()
   const deleteMut = useDeleteProduct()
 
@@ -20,13 +22,13 @@ export function ProductList() {
       <div className="p-6">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-extrabold text-gray-800">
-            Our Products
+            {t('products.title')}
           </h1>
           {/* OCP: we can add new permissions/UI without changing delete logic */}
           <RoleBasedAccess requiredPermission="create:product">
             <Link to="/products/new">
               <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded shadow">
-                + New Product
+                {t('products.newProduct')}
               </button>
             </Link>
           </RoleBasedAccess>
@@ -63,7 +65,7 @@ export function ProductList() {
                         params={{ productId: p.id }}
                       >
                         <button className="text-sm bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded">
-                          Edit
+                          {t('products.edit')}
                         </button>
                       </Link>
                     </RoleBasedAccess>
@@ -74,7 +76,9 @@ export function ProductList() {
                         disabled={deleteMut.isPending}
                         className="text-sm bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
                       >
-                        Delete
+                        {deleteMut.isPending
+                          ? t('common.loading')
+                          : t('products.delete')}
                       </button>
                     </RoleBasedAccess>
                   </div>

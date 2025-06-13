@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { useAuth } from '@/contexts/AuthContext'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 
 export default function Header() {
   const { isAuthenticated, user, logout } = useAuth()
@@ -58,6 +59,9 @@ export default function Header() {
               Login
             </Link>
           )}
+
+          {/* Language switcher */}
+          <LanguageSwitcher />
         </nav>
       </div>
     </header>

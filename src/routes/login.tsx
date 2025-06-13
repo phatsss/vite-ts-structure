@@ -1,12 +1,15 @@
 import { createFileRoute, Navigate } from '@tanstack/react-router'
-import LoginForm from '../components/LoginForm'
-import { useAuth } from '../contexts/AuthContext'
+import { useTranslation } from 'react-i18next'
+
+import LoginForm from '@/components/LoginForm'
+import { useAuth } from '@/contexts/AuthContext'
 
 export const Route = createFileRoute('/login')({
   component: LoginPage,
 })
 
 function LoginPage() {
+  const { t } = useTranslation()
   const { isAuthenticated, isLoading } = useAuth()
 
   // Show loading state
@@ -25,7 +28,9 @@ function LoginPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8 text-center">Welcome Back</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center">
+        {t('auth.welcomeBack')}
+      </h1>
       <LoginForm />
     </div>
   )
