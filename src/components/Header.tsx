@@ -32,7 +32,13 @@ export default function Header() {
               >
                 Dashboard
               </Link>
-
+              <Link
+                to="/products"
+                className="hover:text-blue-600 transition-colors"
+                activeProps={{ className: 'text-blue-600 font-medium' }}
+              >
+                Products
+              </Link>
               <div className="flex items-center space-x-2">
                 <span className="text-sm text-gray-600">Hi, {user?.name}</span>
                 <button
