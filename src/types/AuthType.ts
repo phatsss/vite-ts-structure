@@ -1,6 +1,6 @@
 export type UserRole = 'admin' | 'manager' | 'user' | 'guest'
 
-export type Permission = 
+export type Permission =
   | 'create:users'
   | 'read:users'
   | 'update:users'
@@ -9,6 +9,10 @@ export type Permission =
   | 'read:posts'
   | 'update:posts'
   | 'delete:posts'
+  | 'create:product'
+  | 'read:product'
+  | 'update:product'
+  | 'delete:product'
 
 export interface User {
   id: string
