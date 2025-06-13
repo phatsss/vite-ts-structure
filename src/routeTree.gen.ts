@@ -16,7 +16,8 @@ import { Route as DashboardImport } from './routes/dashboard'
 import { Route as IndexImport } from './routes/index'
 import { Route as ProductsIndexImport } from './routes/products/index'
 import { Route as ProductsNewImport } from './routes/products/new'
-import { Route as ProductsProductIdEditImport } from './routes/products/$productId.edit'
+import { Route as ProductsProductIdIndexImport } from './routes/products/$productId/index'
+import { Route as ProductsProductIdEditImport } from './routes/products/$productId/edit'
 
 // Create/Update Routes
 
@@ -47,6 +48,12 @@ const ProductsIndexRoute = ProductsIndexImport.update({
 const ProductsNewRoute = ProductsNewImport.update({
   id: '/products/new',
   path: '/products/new',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ProductsProductIdIndexRoute = ProductsProductIdIndexImport.update({
+  id: '/products/$productId/',
+  path: '/products/$productId/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -102,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsProductIdEditImport
       parentRoute: typeof rootRoute
     }
+    '/products/$productId/': {
+      id: '/products/$productId/'
+      path: '/products/$productId'
+      fullPath: '/products/$productId'
+      preLoaderRoute: typeof ProductsProductIdIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -114,6 +128,7 @@ export interface FileRoutesByFullPath {
   '/products/new': typeof ProductsNewRoute
   '/products': typeof ProductsIndexRoute
   '/products/$productId/edit': typeof ProductsProductIdEditRoute
+  '/products/$productId': typeof ProductsProductIdIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -123,6 +138,7 @@ export interface FileRoutesByTo {
   '/products/new': typeof ProductsNewRoute
   '/products': typeof ProductsIndexRoute
   '/products/$productId/edit': typeof ProductsProductIdEditRoute
+  '/products/$productId': typeof ProductsProductIdIndexRoute
 }
 
 export interface FileRoutesById {
@@ -133,6 +149,7 @@ export interface FileRoutesById {
   '/products/new': typeof ProductsNewRoute
   '/products/': typeof ProductsIndexRoute
   '/products/$productId/edit': typeof ProductsProductIdEditRoute
+  '/products/$productId/': typeof ProductsProductIdIndexRoute
 }
 
 export interface FileRouteTypes {
@@ -144,6 +161,7 @@ export interface FileRouteTypes {
     | '/products/new'
     | '/products'
     | '/products/$productId/edit'
+    | '/products/$productId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -152,6 +170,7 @@ export interface FileRouteTypes {
     | '/products/new'
     | '/products'
     | '/products/$productId/edit'
+    | '/products/$productId'
   id:
     | '__root__'
     | '/'
@@ -160,6 +179,7 @@ export interface FileRouteTypes {
     | '/products/new'
     | '/products/'
     | '/products/$productId/edit'
+    | '/products/$productId/'
   fileRoutesById: FileRoutesById
 }
 
@@ -170,6 +190,7 @@ export interface RootRouteChildren {
   ProductsNewRoute: typeof ProductsNewRoute
   ProductsIndexRoute: typeof ProductsIndexRoute
   ProductsProductIdEditRoute: typeof ProductsProductIdEditRoute
+  ProductsProductIdIndexRoute: typeof ProductsProductIdIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -179,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsNewRoute: ProductsNewRoute,
   ProductsIndexRoute: ProductsIndexRoute,
   ProductsProductIdEditRoute: ProductsProductIdEditRoute,
+  ProductsProductIdIndexRoute: ProductsProductIdIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -196,7 +218,8 @@ export const routeTree = rootRoute
         "/login",
         "/products/new",
         "/products/",
-        "/products/$productId/edit"
+        "/products/$productId/edit",
+        "/products/$productId/"
       ]
     },
     "/": {
@@ -215,7 +238,10 @@ export const routeTree = rootRoute
       "filePath": "products/index.tsx"
     },
     "/products/$productId/edit": {
-      "filePath": "products/$productId.edit.tsx"
+      "filePath": "products/$productId/edit.tsx"
+    },
+    "/products/$productId/": {
+      "filePath": "products/$productId/index.tsx"
     }
   }
 }

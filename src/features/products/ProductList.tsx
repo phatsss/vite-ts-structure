@@ -6,46 +6,84 @@ export function ProductList() {
   const { data: products, isLoading, error } = useProducts()
   const deleteMut = useDeleteProduct()
 
-  if (isLoading) return <p>Loading products…</p>
+  if (isLoading)
+    return (
+      <div className="flex justify-center py-20">
+        <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-16 w-16"></div>
+      </div>
+    )
+
   if (error) return <p>Error loading products.</p>
 
   return (
-    <div>
-      <h1>Products</h1>
+    <>
+      <div className="p-6">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-extrabold text-gray-800">
+            Our Products
+          </h1>
+          {/* OCP: we can add new permissions/UI without changing delete logic */}
+          <RoleBasedAccess requiredPermission="create:product">
+            <Link to="/products/new">
+              <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded shadow">
+                + New Product
+              </button>
+            </Link>
+          </RoleBasedAccess>
+        </div>
 
-      {/* OCP: we can add new permissions/UI without changing delete logic */}
-      <RoleBasedAccess requiredPermission={'create:product'}>
-        <Link to="/products/new">
-          <button className="btn">+ New Product</button>
-        </Link>
-      </RoleBasedAccess>
-
-      <ul>
-        {products!.map((p) => (
-          <li key={p.id} className="flex justify-between py-2">
-            {/* <Link to={`/products/$productId`}  params={{ productId: p.id }}>{p.name}</Link> */}
-            <div className="space-x-2">
-              <RoleBasedAccess requiredPermission="update:product">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {products!.map((p) => (
+            <div
+              key={p.id}
+              className="bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden transition-shadow duration-200"
+            >
+              <div className="p-4">
                 <Link
-                  to={`/products/$productId/edit`}
+                  to="/products/$productId"
                   params={{ productId: p.id }}
+                  className="text-xl font-semibold text-indigo-600 hover:underline"
                 >
-                  <button className="btn-sm">Edit</button>
+                  {p.name}
                 </Link>
-              </RoleBasedAccess>
-              <RoleBasedAccess requiredPermission="delete:product">
-                <button
-                  className="btn-sm btn-danger"
-                  onClick={() => deleteMut.mutate(p.id)}
-                  disabled={deleteMut.isPending}
-                >
-                  Delete
-                </button>
-              </RoleBasedAccess>
+
+                <p className="mt-2 text-gray-600 line-clamp-3">
+                  {p.description || 'No description.'}
+                </p>
+
+                <div className="mt-4 flex items-center justify-between">
+                  <span className="inline-block bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">
+                    ${p.price.toFixed(2)}
+                  </span>
+
+                  <div className="flex space-x-2">
+                    <RoleBasedAccess requiredPermission="update:product">
+                      <Link
+                        to="/products/$productId/edit"
+                        params={{ productId: p.id }}
+                      >
+                        <button className="text-sm bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded">
+                          Edit
+                        </button>
+                      </Link>
+                    </RoleBasedAccess>
+
+                    <RoleBasedAccess requiredPermission="delete:product">
+                      <button
+                        onClick={() => deleteMut.mutate(p.id)}
+                        disabled={deleteMut.isPending}
+                        className="text-sm bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
+                      >
+                        Delete
+                      </button>
+                    </RoleBasedAccess>
+                  </div>
+                </div>
+              </div>
             </div>
-          </li>
-        ))}
-      </ul>
-    </div>
+          ))}
+        </div>
+      </div>
+    </>
   )
 }

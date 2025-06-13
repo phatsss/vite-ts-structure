@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "name": "Wireless Mouse",
+    "description": "Ergonomic wireless mouse with USB receiver",
+    "price": 29.99
+  },
+  {
+    "id": "2",
+    "name": "Mechanical Keyboard",
+    "description": "RGB backlit mechanical keyboard, blue switches",
+    "price": 79.5
+  },
+  {
+    "id": "3",
+    "name": "HD Webcam",
+    "description": "1080p USB webcam with built-in microphone",
+    "price": 49.0
+  }
+]

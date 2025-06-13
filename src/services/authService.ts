@@ -17,6 +17,10 @@ const MOCK_USERS = [
       'read:posts',
       'update:posts',
       'delete:posts',
+      'create:product',
+      'read:product',
+      'update:product',
+      'delete:product',
     ],
   },
   {
