@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/sidebar'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { useTranslation } from 'react-i18next'
+import { Link } from '@tanstack/react-router'
 
 export function NavSecondary({
   items,
@@ -31,10 +32,10 @@ export function NavSecondary({
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton asChild onClick={item.action}>
-                <a href={item.url}>
+                <Link to={item.url}>
                   <item.icon />
                   <span>{t(`nav.${item.title}`)}</span>
-                </a>
+                </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}

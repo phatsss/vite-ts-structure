@@ -31,6 +31,7 @@ import { NavMain } from './NavMain'
 import { NavSecondary } from './NavSecondary'
 import { NavUser } from './NavUser'
 import { useTranslation } from 'react-i18next'
+import { Link } from '@tanstack/react-router'
 
 const data = {
   user: {
@@ -41,7 +42,7 @@ const data = {
   navMain: [
     {
       title: 'dashboard',
-      url: '#',
+      url: '/dashboard',
       icon: LayoutDashboard,
     },
     {
@@ -169,12 +170,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-              <a href="#">
+              <Link to="/">
                 <Binary className="!size-5" />
                 <span className="text-base font-semibold">
                   {t('common.appName')}
                 </span>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
