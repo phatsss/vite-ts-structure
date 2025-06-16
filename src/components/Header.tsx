@@ -1,9 +1,11 @@
 import { Link } from '@tanstack/react-router'
 import { useAuth } from '@/contexts/AuthContext'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
+import { useTheme } from '@/contexts/ThemeContext'
 
 export default function Header() {
   const { isAuthenticated, user, logout } = useAuth()
+  const { theme, toggle } = useTheme()
 
   return (
     <header className="p-4 bg-white shadow-md text-black">
@@ -62,6 +64,18 @@ export default function Header() {
 
           {/* Language switcher */}
           <LanguageSwitcher />
+
+          <button
+            onClick={toggle}
+            className="p-2 rounded focus:outline-none focus:ring"
+            aria-label="Toggle theme"
+          >
+            {theme === 'light'
+              ? // <MoonIcon className="h-6 w-6 text-gray-800" />
+                'Light'
+              : // <SunIcon className="h-6 w-6 text-yellow-400" />
+                'Dark'}
+          </button>
         </nav>
       </div>
     </header>

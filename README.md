@@ -11,7 +11,7 @@ A React + Vite + TanStack Query + TanStack Router application with SOLID-complia
 - React Hook Form + Zod (validation)
 - Tailwind CSS
 - TypeScript
-- i18next (multilingual support)
+- Lucide-React (Icons)
 
 ## Coding Standards
 
@@ -149,7 +149,7 @@ npm run test
 
 ## Styling
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
+This project uses [Tailwind CSS](https://tailwindcss.com/) for styling with [Shad/cn UI](https://ui.shadcn.com/docs/installation/vite).
 
 ## Linting & Formatting
 
