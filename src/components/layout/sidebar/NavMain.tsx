@@ -8,6 +8,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
+import { useTranslation } from 'react-i18next'
 
 export function NavMain({
   items,
@@ -18,6 +19,8 @@ export function NavMain({
     icon?: LucideIcon
   }[]
 }) {
+  const { t } = useTranslation()
+
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
@@ -28,7 +31,7 @@ export function NavMain({
               className="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear"
             >
               <Mail />
-              <span>Quick Create</span>
+              <span>{t('nav.quickCreate')}</span>
             </SidebarMenuButton>
             <Button
               size="icon"
@@ -36,7 +39,7 @@ export function NavMain({
               variant="outline"
             >
               <Mail />
-              <span className="sr-only">Inbox</span>
+              <span className="sr-only">{t('nav.inbox')}</span>
             </Button>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -45,7 +48,7 @@ export function NavMain({
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton tooltip={item.title}>
                 {item.icon && <item.icon />}
-                <span>{item.title}</span>
+                <span>{t(`nav.${item.title}`)}</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}

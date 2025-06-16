@@ -10,6 +10,7 @@ import {
   FileText,
   Folder,
   LayoutDashboard,
+  PackageSearch,
   Search,
   Settings,
   Users,
@@ -29,6 +30,7 @@ import { NavDocuments } from './NavDocuments'
 import { NavMain } from './NavMain'
 import { NavSecondary } from './NavSecondary'
 import { NavUser } from './NavUser'
+import { useTranslation } from 'react-i18next'
 
 const data = {
   user: {
@@ -38,27 +40,32 @@ const data = {
   },
   navMain: [
     {
-      title: 'Dashboard',
+      title: 'dashboard',
       url: '#',
       icon: LayoutDashboard,
     },
     {
-      title: 'Lifecycle',
+      title: 'products',
+      url: '/products',
+      icon: PackageSearch,
+    },
+    {
+      title: 'lifecycle',
       url: '#',
       icon: Fan,
     },
     {
-      title: 'Analytics',
+      title: 'analytics',
       url: '#',
       icon: ChartBar,
     },
     {
-      title: 'Projects',
+      title: 'projects',
       url: '#',
       icon: Folder,
     },
     {
-      title: 'Team',
+      title: 'team',
       url: '#',
       icon: Users,
     },
@@ -113,34 +120,37 @@ const data = {
   ],
   navSecondary: [
     {
-      title: 'Settings',
+      title: 'settings',
       url: '#',
       icon: Settings,
     },
     {
-      title: 'Get Help',
+      title: 'help',
       url: '#',
       icon: CircleHelp,
     },
     {
-      title: 'Search',
+      title: 'search',
       url: '#',
       icon: Search,
+      action: () => {
+        console.log('click')
+      },
     },
   ],
   documents: [
     {
-      name: 'Data Library',
+      name: 'dataLibrary',
       url: '#',
       icon: Database,
     },
     {
-      name: 'Reports',
+      name: 'reports',
       url: '#',
       icon: FileText,
     },
     {
-      name: 'Word Assistant',
+      name: 'wordAssistant',
       url: '#',
       icon: Earth,
     },
@@ -148,6 +158,8 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { t } = useTranslation()
+
   return (
     <Sidebar variant="inset" collapsible="icon" {...props}>
       <SidebarHeader>
@@ -159,7 +171,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             >
               <a href="#">
                 <Binary className="!size-5" />
-                <span className="text-base font-semibold">Dashboard.</span>
+                <span className="text-base font-semibold">
+                  {t('common.appName')}
+                </span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>

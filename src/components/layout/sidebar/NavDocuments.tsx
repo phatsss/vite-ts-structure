@@ -2,7 +2,6 @@ import {
   Ellipsis,
   EllipsisVertical,
   Eraser,
-  Folder,
   FolderOpen,
   Share,
   type LucideIcon,
@@ -24,6 +23,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar'
+import { useTranslation } from 'react-i18next'
 
 export function NavDocuments({
   items,
@@ -35,6 +35,7 @@ export function NavDocuments({
   }[]
 }) {
   const { isMobile } = useSidebar()
+  const { t } = useTranslation()
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
@@ -45,7 +46,7 @@ export function NavDocuments({
             <SidebarMenuButton asChild>
               <a href={item.url}>
                 <item.icon />
-                <span>{item.name}</span>
+                <span>{t(`nav.${item.name}`)}</span>
               </a>
             </SidebarMenuButton>
             <DropdownMenu>
@@ -65,16 +66,16 @@ export function NavDocuments({
               >
                 <DropdownMenuItem>
                   <FolderOpen />
-                  <span>Open</span>
+                  <span>{t('common.open')}</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Share />
-                  <span>Share</span>
+                  <span>{t('common.share')}</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem variant="destructive">
                   <Eraser />
-                  <span>Delete</span>
+                  <span>{t('common.delete')}</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

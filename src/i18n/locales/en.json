@@ -2,7 +2,20 @@
   "common": {
     "appName": "My App",
     "loading": "Loading...",
-    "error": "An error occurred"
+    "error": "An error occurred",
+    "open": "Open",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "create": "Create",
+    "update": "Update",
+    "view": "View",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "share": "Share"
   },
   "auth": {
     "login": "Login",
@@ -23,7 +36,23 @@
   "nav": {
     "home": "Home",
     "dashboard": "Dashboard",
-    "products": "Products"
+    "products": "Products",
+    "settings": "Settings",
+    "quickCreate": "Quick Create",
+    "inbox": "Inbox",
+    "lifecycle": "Lifecycle",
+    "analytics": "Analytics",
+    "projects": "Projects",
+    "team": "Team",
+    "help": "Get Help",
+    "search": "Search",
+    "dataLibrary": "Data Library",
+    "reports": "Reports",
+    "wordAssistant": "Word Assistant",
+    "account": "Account",
+    "billing": "Billing",
+    "notifications": "Notifications",
+    "logout": "Logout"
   },
   "dashboard": {
     "title": "Dashboard",
@@ -54,7 +83,7 @@
   },
   "language": {
     "english": "English",
-    "lao": "ລາວ",
-    "changeLanguage": "Change Language"
+    "lao": "Lao",
+    "title": "Languages"
   }
 }

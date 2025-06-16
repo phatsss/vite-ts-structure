@@ -8,6 +8,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
+import { useTranslation } from 'react-i18next'
 
 export function NavSecondary({
   items,
@@ -17,22 +19,26 @@ export function NavSecondary({
     title: string
     url: string
     icon: LucideIcon
+    action?: () => void
   }[]
 } & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
+  const { t } = useTranslation()
+
   return (
     <SidebarGroup {...props}>
       <SidebarGroupContent>
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild>
+              <SidebarMenuButton asChild onClick={item.action}>
                 <a href={item.url}>
                   <item.icon />
-                  <span>{item.title}</span>
+                  <span>{t(`nav.${item.title}`)}</span>
                 </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
+          <LanguageSwitcher />
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>
