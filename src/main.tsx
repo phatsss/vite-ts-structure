@@ -16,6 +16,7 @@ import reportWebVitals from './reportWebVitals.ts'
 // Import contexts
 import { AuthProvider } from '@/contexts/AuthContext'
 import { ServiceProvider } from '@/contexts/ServiceContext.tsx'
+import { ThemeProvider } from './contexts/ThemeContext'
 
 // Import i18n configuration
 import './i18n/config'
@@ -65,8 +66,10 @@ if (rootElement && !rootElement.innerHTML) {
         <ServiceProvider>
           {/* Provide auth state */}
           <AuthProvider>
-            {/* TanStack Router */}
-            <RouterProvider router={router} />
+            <ThemeProvider>
+              {/* TanStack Router */}
+              <RouterProvider router={router} />
+            </ThemeProvider>
           </AuthProvider>
         </ServiceProvider>
       </QueryClientProvider>

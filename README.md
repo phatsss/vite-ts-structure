@@ -1,27 +1,34 @@
-# Getting Started
+# SOLID Project Structure
 
-To run this application:
+A React + Vite + TanStack Query + TanStack Router application with SOLID-compliant architecture and robust form validation.
 
-```bash
-npm install
-npm run start
-```
+## Tech Stack
 
-# Building For Production
+- React 18
+- Vite
+- TanStack Query
+- TanStack Router
+- React Hook Form + Zod (validation)
+- Tailwind CSS
+- TypeScript
+- Lucide-React (Icons)
 
-To build this application for production:
+## Coding Standards
 
-```bash
-npm run build
-```
+- SOLID architecture (interfaces, DI, single-responsibility)
+- Feature-first co-location (hooks + UI + types per feature)
+- React Query for all server data
+- React Context for auth & service DI
+- No global store unless absolutely needed
 
-## Testing
+## Form Validation Standard
 
-This project uses [Vitest](https://vitest.dev/) for testing. You can run the tests with:
+All forms must use React Hook Form together with Zod for:
 
-```bash
-npm run test
-```
+- Type-safe schemas
+- Runtime validation
+- Declarative error messages
+- Zero boilerplate on inputs
 
 ## Project Structure
 
@@ -52,26 +59,41 @@ npm run test
 ### CRUD Product Example:
 
 ```bash
-src/
-├─ contexts/
-│  ├─ AuthContext.tsx
-│  └─ ServiceContext.tsx      ← dependency injection for services
-├─ services/
-│  ├─ IProductService.ts     ← service interface (abstraction)
-│  └─ ProductService.ts      ← concrete HTTP implementation
-├─ types/
-│  └─ Product.ts             ← DTO definitions
-├─ features/
-│  └─ products/
-│      ├─ hooks.ts           ← React Query hooks depend on IProductService
-│      ├─ ProductList.tsx    ← list UI
-│      └─ ProductForm.tsx    ← create/edit form UI
-├─ routes/
-│  ├─ products.tsx           ← “GET /products” list page
-│  ├─ products.new.tsx       ← “GET /products/new” create page
-│  └─ products.$productId.tsx← “GET /products/:id” detail/edit page
-├─ main.tsx                  ← app entry, providers setup
-└─ ...other folders…
+src/                          # Application source root
+├── components/               # Reusable, presentation-only React components
+│   └── …                     # e.g. Header.tsx, RoleBasedAccess.tsx, etc.
+│
+├── contexts/                 # React Context providers & hooks
+│   ├── AuthContext.tsx       # Authentication state (login, logout, current user)
+│   └── ServiceContext.tsx    # Dependency-injection container for service implementations
+│
+├── features/                 # “Feature‐first” modules: co-locate logic + UI
+│   └── products/             # Products feature
+│       ├── hooks.ts          # React-Query hooks (getAll, getById, create, update, delete)
+│       ├── ProductForm.tsx   # Form component for create/edit, with validation
+│       └── ProductList.tsx   # List view & product action buttons
+│
+├── routes/                   # File-based route components (TanStack Router)
+│   └── products/             # /products routes
+│       ├── index.tsx         # GET  /products           → ProductList page
+│       ├── new.tsx           # GET  /products/new       → Create Product page
+│       └── $productId/       # Nested “layout” for a single product
+│           ├── index.tsx     # GET  /products/:productId       → Detail page
+│           └── edit.tsx      # GET  /products/:productId/edit  → Edit page
+│
+├── services/                 # Service layer (abstractions + implementations)
+│   ├── IProductService.ts    # Service interface (SOLID: DIP/ISP)
+│   ├── ProductService.ts     # Concrete HTTP implementation (CRUD)
+│   └── MockProductService.ts # In-memory mock for dev/testing
+│
+├── types/                    # TypeScript type & schema definitions
+│   └── Product.ts            # Product DTO & Zod schema for validation
+│
+├── utils/                    # Shared utility functions (formatters, permissions, etc.)
+│   └── …
+│
+├── main.tsx                  # App entry: compose QueryClient, Providers, RouterProvider
+└── styles.css                # Global styles & Tailwind imports
 ```
 
 #### With this structure:
@@ -98,11 +120,36 @@ src/
 - Types : Use PascalCase with descriptive names
   - UserType.ts , AuthState.ts
 - Constants : Use UPPER_SNAKE_CASE for constant values
-  - API_ENDPOINTS.ts , COLOR_PALETTE.ts
+  - API_ENDPOINTS , COLOR_PALETTE
+
+# Getting Started
+
+To run this application:
+
+```bash
+npm install
+npm run start
+```
+
+# Building For Production
+
+To build this application for production:
+
+```bash
+npm run build
+```
+
+## Testing
+
+This project uses [Vitest](https://vitest.dev/) for testing. You can run the tests with:
+
+```bash
+npm run test
+```
 
 ## Styling
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
+This project uses [Tailwind CSS](https://tailwindcss.com/) for styling with [Shad/cn UI](https://ui.shadcn.com/docs/installation/vite).
 
 ## Linting & Formatting
 
@@ -289,79 +336,6 @@ export default App
 ```
 
 You can find out everything you need to know on how to use React-Query in the [React-Query documentation](https://tanstack.com/query/latest/docs/framework/react/overview).
-
-## State Management
-
-Another common requirement for React applications is state management. There are many options for state management in React. TanStack Store provides a great starting point for your project.
-
-First you need to add TanStack Store as a dependency:
-
-```bash
-npm install @tanstack/store
-```
-
-Now let's create a simple counter in the `src/App.tsx` file as a demonstration.
-
-```tsx
-import { useStore } from '@tanstack/react-store'
-import { Store } from '@tanstack/store'
-import './App.css'
-
-const countStore = new Store(0)
-
-function App() {
-  const count = useStore(countStore)
-  return (
-    <div>
-      <button onClick={() => countStore.setState((n) => n + 1)}>
-        Increment - {count}
-      </button>
-    </div>
-  )
-}
-
-export default App
-```
-
-One of the many nice features of TanStack Store is the ability to derive state from other state. That derived state will update when the base state updates.
-
-Let's check this out by doubling the count using derived state.
-
-```tsx
-import { useStore } from '@tanstack/react-store'
-import { Store, Derived } from '@tanstack/store'
-import './App.css'
-
-const countStore = new Store(0)
-
-const doubledStore = new Derived({
-  fn: () => countStore.state * 2,
-  deps: [countStore],
-})
-doubledStore.mount()
-
-function App() {
-  const count = useStore(countStore)
-  const doubledCount = useStore(doubledStore)
-
-  return (
-    <div>
-      <button onClick={() => countStore.setState((n) => n + 1)}>
-        Increment - {count}
-      </button>
-      <div>Doubled - {doubledCount}</div>
-    </div>
-  )
-}
-
-export default App
-```
-
-We use the `Derived` class to create a new store that is derived from another store. The `Derived` class has a `mount` method that will start the derived store updating.
-
-Once we've created the derived store we can use it in the `App` component just like we would any other store using the `useStore` hook.
-
-You can find out everything you need to know on how to use TanStack Store in the [TanStack Store documentation](https://tanstack.com/store/latest).
 
 # Learn More
 

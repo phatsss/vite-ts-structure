@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import ProtectedRoute from '@/components/ProtectedRoute'
 import UserProfile from '@/components/UserProfile'
 import RoleBasedAccess from '@/components/RoleBasedAccess'
-
+import { Button } from '@/components/ui/button'
 export const Route = createFileRoute('/dashboard')({
   component: DashboardPage,
 })
@@ -12,7 +12,7 @@ function DashboardPage() {
     <ProtectedRoute>
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8 text-center">Dashboard</h1>
-
+        <Button>Test</Button>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <UserProfile />

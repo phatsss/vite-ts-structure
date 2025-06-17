@@ -2,7 +2,23 @@
   "common": {
     "appName": "ແອັບຂອງຂ້ອຍ",
     "loading": "ກຳລັງໂຫລດ...",
-    "error": "ເກີດຂໍ້ຜິດພາດ"
+    "error": "ເກີດຂໍ້ຜິດພາດ",
+    "open": "ເປີດ",
+    "close": "ປິດ",
+    "save": "ບັນທຶກ",
+    "cancel": "ຍົກເລີກ",
+    "edit": "ແກ້ໄຂ",
+    "delete": "ລຶບ",
+    "create": "ສ້າງລາຍການ",
+    "update": "ອັບເດດ",
+    "view": "ເບິ່ງ",
+    "back": "ຍ້ອນກັບ",
+    "next": "ຖັດໄປ",
+    "previous": "ກ່ອນໜ້າ",
+    "share": "ແຊ",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "ລະບົບ"
   },
   "auth": {
     "login": "ເຂົ້າສູ່ລະບົບ",
@@ -23,7 +39,24 @@
   "nav": {
     "home": "ໜ້າຫຼັກ",
     "dashboard": "ແຜງຄວບຄຸມ",
-    "products": "ຜະລິດຕະພັນ"
+    "products": "ຜະລິດຕະພັນ",
+    "settings": "ຕັ້ງຄ່າ",
+    "quickCreate": "ຂຽນຂໍ້ຄວາມ",
+    "inbox": "ກ່ອງຂໍ້ຄວາມ",
+    "lifecycle": "Lifecycle",
+    "analytics": "ວິເຄາະ",
+    "projects": "ໂຄງການ",
+    "team": "ທີມ",
+    "help": "ຊ່ວບເຫຼືອ",
+    "search": "ຄົ້ນຫາ",
+    "dataLibrary": "Data Library",
+    "reports": "ລາຍງານ",
+    "wordAssistant": "Word Assistant",
+    "account": "ບັນຊີ",
+    "billing": "ການຊຳລະເງິນ",
+    "notifications": "ການແຈ້ງເຕືອນ",
+    "logout": "ອອກຈາກລະບົບ",
+    "switchMode": "ປ່ຽນໂໝດ"
   },
   "dashboard": {
     "title": "ແຜງຄວບຄຸມ",
@@ -53,8 +86,8 @@
     "delete": "ລຶບ"
   },
   "language": {
-    "english": "English",
+    "english": "ອັງກິດ",
     "lao": "ລາວ",
-    "changeLanguage": "ປ່ຽນພາສາ"
+    "title": "ປ່ຽນພາສາ"
   }
 }
