@@ -1,4 +1,4 @@
-import type { Product, ProductInput } from '../../types/Product'
+import type { Product, ProductInput } from '../../types/schemas/ProductSchema'
 
 // ISP: only the methods we need for Product CRUD
 export interface IProductService {

@@ -1,5 +1,5 @@
 import type { IProductService } from './IProductService'
-import type { Product, ProductInput } from '@/types/Product'
+import type { Product, ProductInput } from '@/types/schemas/ProductSchema'
 import rawData from './mockProducts.json'
 
 // We keep an in-memory copy so creates/updates/deletes persist during runtime
@@ -8,7 +8,7 @@ let products: Product[] = [...rawData]
 // Concrete implementation: low-level HTTP calls
 export class ProductService implements IProductService {
   // base URL for all product-related requests
-  private base = '/api/products'
+  // private base = '/api/products'
 
   /** Fetch all products */
   async getAll(): Promise<Product[]> {

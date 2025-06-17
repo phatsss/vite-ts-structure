@@ -1,30 +1,31 @@
 import { useTheme } from '@/contexts/ThemeContext'
+import { Moon, Sun } from 'lucide-react'
+import { GuestNavbar } from './GuestNavbar'
+import { Button } from '../ui/button'
 
 interface GuestLayoutProps {
   children: React.ReactNode
 }
 
 export default function GuestLayout({ children }: GuestLayoutProps) {
-  const { theme, toggle } = useTheme()
+  const { theme, setTheme } = useTheme()
+
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
-      <header className="bg-white shadow-sm">
-        <div className="max-w-4xl mx-auto p-4">
-          <h1 className="text-xl font-bold">MyApp (Guest)</h1>
-        </div>
-        <button onClick={toggle} className="px-3 py-1 bg-primary  rounded">
-          {theme === 'light' ? 'Dark' : 'Light'} Mode
-        </button>
+    <div className="min-h-screen">
+      <header className="flex items-center justify-between p-4">
+        <a href="/" className="text-2xl font-bold text-primary">
+          MyApp
+        </a>
+        <GuestNavbar />
+        <Button
+          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+          variant={'outline'}
+          size={'icon'}
+        >
+          {theme === 'light' ? <Moon /> : <Sun />}
+        </Button>
       </header>
-
-      <main className="flex-grow container mx-auto p-6">
-        {/* Render <login />, <index />, etc. */}
-        {children}
-      </main>
-
-      <footer className="bg-gray-100 text-center p-4 text-sm">
-        © 2025 MyApp
-      </footer>
+      <main className="p-6">{children}</main>
     </div>
   )
 }

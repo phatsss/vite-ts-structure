@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import type { ProductInput } from '../../types/Product'
+import type { ProductInput } from '../../types/schemas/ProductSchema'
 import { useServices } from '../../contexts/ServiceContext'
 
 // SRP: this module only defines data‐fetching hooks
