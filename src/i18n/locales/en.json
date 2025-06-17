@@ -15,7 +15,10 @@
     "back": "Back",
     "next": "Next",
     "previous": "Previous",
-    "share": "Share"
+    "share": "Share",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
   },
   "auth": {
     "login": "Login",
@@ -52,7 +55,8 @@
     "account": "Account",
     "billing": "Billing",
     "notifications": "Notifications",
-    "logout": "Logout"
+    "logout": "Logout",
+    "switchMode": "Switch Mode"
   },
   "dashboard": {
     "title": "Dashboard",

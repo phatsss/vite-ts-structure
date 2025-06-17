@@ -15,7 +15,10 @@
     "back": "ຍ້ອນກັບ",
     "next": "ຖັດໄປ",
     "previous": "ກ່ອນໜ້າ",
-    "share": "ແຊ"
+    "share": "ແຊ",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "ລະບົບ"
   },
   "auth": {
     "login": "ເຂົ້າສູ່ລະບົບ",
@@ -52,7 +55,8 @@
     "account": "ບັນຊີ",
     "billing": "ການຊຳລະເງິນ",
     "notifications": "ການແຈ້ງເຕືອນ",
-    "logout": "ອອກຈາກລະບົບ"
+    "logout": "ອອກຈາກລະບົບ",
+    "switchMode": "ປ່ຽນໂໝດ"
   },
   "dashboard": {
     "title": "ແຜງຄວບຄຸມ",

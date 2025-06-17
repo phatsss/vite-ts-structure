@@ -8,9 +8,10 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
-import LanguageSwitcher from '@/components/LanguageSwitcher'
+import LanguageSwitcher from '@/components/layout/sidebar/LanguageSwitcherSideMenu'
 import { useTranslation } from 'react-i18next'
 import { Link } from '@tanstack/react-router'
+import ModeToggle from '@/components/layout/sidebar/ModeToggleSideMenu'
 
 export function NavSecondary({
   items,
@@ -39,8 +40,9 @@ export function NavSecondary({
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
-          <LanguageSwitcher />
         </SidebarMenu>
+        <LanguageSwitcher />
+        <ModeToggle />
       </SidebarGroupContent>
     </SidebarGroup>
   )

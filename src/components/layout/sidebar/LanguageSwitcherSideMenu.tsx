@@ -6,14 +6,14 @@ import {
   DropdownMenuContent,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from './ui/dropdown-menu'
+} from '@/components/ui/dropdown-menu'
 import {
   SidebarMenu,
   SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from './ui/sidebar'
+} from '@/components/ui/sidebar'
 
 /**
  * LanguageSwitcher component

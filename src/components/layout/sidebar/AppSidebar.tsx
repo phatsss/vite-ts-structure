@@ -26,12 +26,12 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
+import { Link } from '@tanstack/react-router'
+import { useTranslation } from 'react-i18next'
 import { NavDocuments } from './NavDocuments'
 import { NavMain } from './NavMain'
 import { NavSecondary } from './NavSecondary'
 import { NavUser } from './NavUser'
-import { useTranslation } from 'react-i18next'
-import { Link } from '@tanstack/react-router'
 
 const data = {
   user: {
