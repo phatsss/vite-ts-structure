@@ -1,14 +1,14 @@
-import { createContext, useContext, type ReactNode } from 'react'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { authService } from '@/services/authService'
 import type {
   AuthContextType,
   LoginCredentials,
   Permission,
-  User,
   UserRole,
 } from '@/types/AuthType'
+import type { LoginCredentialsInput } from '@/types/schemas/LoginSchema'
 import { checkPermission, checkRole } from '@/utils/permissions'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { createContext, useContext, type ReactNode } from 'react'
 
 // Create the context
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -30,7 +30,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Login mutation
   const loginMutation = useMutation({
-    mutationFn: (credentials: LoginCredentials) =>
+    mutationFn: (credentials: LoginCredentialsInput) =>
       authService.login(credentials),
     onSuccess: (userData) => {
       queryClient.setQueryData(['currentUser'], userData)

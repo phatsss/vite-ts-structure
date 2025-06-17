@@ -28,7 +28,17 @@
     "loginButton": "Log In",
     "loginError": "Invalid email or password",
     "welcomeBack": "Welcome Back",
-    "hi": "Hi, {{name}}"
+    "hi": "Hi, {{name}}",
+    "subtitle": "Welcome back, you've been missed!",
+    "emailPlaceholder": "example@mail.com",
+    "passwordPlaceholder": "********",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign Up",
+    "tosAgreement": "I agree to the Terms of Service",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "orContinueWith": "Or continue with"
   },
   "home": {
     "welcome": "Welcome to My App",

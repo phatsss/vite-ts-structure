@@ -52,7 +52,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function GuestNavbar() {
   return (
-    <NavigationMenu viewport={false}>
+    <NavigationMenu viewport={true}>
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Home</NavigationMenuTrigger>
